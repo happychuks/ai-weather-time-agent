@@ -428,11 +428,15 @@ This project is licensed under the MIT License.
 
 **Happy Felix Chukwuma**
 
-[![GitHub](https://img.shields.io/badge/GitHub-happychuks-blue?style=flat&logo=github)](https://github.com/happychuks)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Happy%20Felix%20Chukwuma-blue?style=flat&logo=linkedin)](https://linkedin.com/in/happyfelixchukwuma)
+<a href="https://github.com/happychuks" target="_blank">
+  <img src="https://img.shields.io/badge/GitHub-happychuks-blue?style=flat&logo=github" alt="GitHub">
+</a>
+<a href="https://linkedin.com/in/happyfelixchukwuma" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-Happy%20Felix%20Chukwuma-blue?style=flat&logo=linkedin" alt="LinkedIn">
+</a>
 
-- 🐙 **GitHub**: [github.com/happychuks](https://github.com/happychuks)
-- 💼 **LinkedIn**: [linkedin.com/in/happyfelixchukwuma](https://linkedin.com/in/happyfelixchukwuma)
-- 📧 **Email**: [happychukwuma@gmail.com](mailto:happychukwuma@gmail.com)
+- 🐙 **GitHub**: <a href="https://github.com/happychuks" target="_blank">github.com/happychuks</a>
+- 💼 **LinkedIn**: <a href="https://linkedin.com/in/happyfelixchukwuma" target="_blank">linkedin.com/in/happyfelixchukwuma</a>
+- 📧 **Email**: <a href="mailto:happychukwuma@gmail.com">happychukwuma@gmail.com</a>
 
 Feel free to reach out for questions, contributions, or collaboration opportunities!
