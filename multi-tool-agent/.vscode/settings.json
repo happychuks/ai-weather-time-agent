@@ -1,0 +1,17 @@
+{
+    "files.exclude": {
+        "**/.venv": true,
+        "**/venv": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        //".env": true
+    },
+    "search.exclude": {
+        "**/.venv": true,
+        "**/venv": true,
+        "**/__pycache__": true,
+        "**/node_modules": true
+    },
+    "git.ignoreLimitWarning": true,
+    "scm.defaultViewMode": "tree"
+}
