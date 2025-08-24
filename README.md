@@ -26,39 +26,190 @@ A robust Google AI agent that provides real-time weather data and comprehensive 
 - **Geocoding** for any city worldwide
 - **Comprehensive error handling** and validation
 
-## Setup
+## Quick Start
 
-### 1. Install Dependencies
+### 1. Clone the Repository
 
 ```bash
+git clone https://github.com/happychuks/ai-weather-time-agent.git
+cd ai-weather-time-agent
+```
+
+### 2. Set Up Python Environment
+
+```bash
+# Create a virtual environment (recommended)
+python -m venv .venv
+
+# Activate virtual environment
+# On macOS/Linux:
+source .venv/bin/activate
+# On Windows:
+# .venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+cd multi-tool-agent
 pip install -r requirements.txt
 ```
 
-### 2. Get OpenWeatherMap API Key (Optional but Recommended)
+### 4. Configure Environment Variables
+
+```bash
+# Copy the example environment file
+cp .env.example .env
+
+# Edit .env file and add your API keys
+# Required: OPENWEATHER_API_KEY (get from https://openweathermap.org/api)
+# Required: GOOGLE_API_KEY (get from https://makersuite.google.com/app/apikey)
+```
+
+### 5. Run the Agent
+
+#### Option A: Google ADK Web Interface (Recommended)
+
+```bash
+# Navigate to the parent directory
+cd ..
+
+# Start the ADK web server
+adk web
+```
+
+Then open http://localhost:8000 in your browser to interact with the agent.
+
+#### Option B: Direct Python Usage
+
+```bash
+# From the multi-tool-agent directory
+cd multi-tool-agent
+
+# Test the agent
+python test_agent.py
+
+# Or use in your own Python script
+python -c "
+from agent import root_agent
+from weather import weather_service
+
+# Test weather function
+result = weather_service.get_current_weather('London')
+print(result)
+"
+```
+
+## Setup
+
+## Detailed Configuration
+
+### 1. API Keys Setup
+
+#### Google AI API Key (Required)
+
+1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Create a new project or select existing one
+3. Generate an API key
+4. Add to your `.env` file:
+
+```bash
+GOOGLE_API_KEY=your_google_api_key_here
+```
+
+#### OpenWeatherMap API Key (Optional but Recommended)
 
 1. Sign up for a free account at [OpenWeatherMap](https://openweathermap.org/api)
 2. Get your API key from the dashboard
 3. Add it to your `.env` file:
 
 ```bash
-# Create or edit .env file in the project directory
-echo "OPENWEATHER_API_KEY=your_api_key_here" >> .env
+OPENWEATHER_API_KEY=your_api_key_here
 ```
 
-**Alternative:** Set as environment variable:
+### 2. Environment File Configuration
+
+Create a `.env` file in the `multi-tool-agent` directory:
 
 ```bash
-export OPENWEATHER_API_KEY="your_api_key_here"
+# Required for Google AI
+GOOGLE_GENAI_USE_VERTEXAI=FALSE
+GOOGLE_API_KEY=your_google_api_key_here
+
+# Required for real-time weather data
+OPENWEATHER_API_KEY=your_openweather_api_key_here
+
+# Optional configurations
+WEATHER_DEFAULT_UNITS=metric
+WEATHER_DEFAULT_LANG=en
+REQUEST_TIMEOUT=10
 ```
 
-**Note:** The agent automatically loads the API key from `.env` file using `python-dotenv`. Without an API key, it works using demo data for major cities, but real-time data requires the API key.
+### 3. Verify Installation
 
-### 3. Usage
+```bash
+# Test that everything is working
+cd multi-tool-agent
+python -c "
+from agent import root_agent
+print('✓ Agent loaded successfully!')
+print(f'✓ Available functions: {len(root_agent.tools)}')
+"
+```
+
+### 4. Running Tests
+
+```bash
+# Run the comprehensive test suite
+cd multi-tool-agent
+python test_agent.py
+```
+
+## Usage
+
+### Using with Google ADK Web Interface
+
+This is the recommended way to interact with the agent:
+
+```bash
+# From the project root directory
+cd ai-weather-time-agent
+adk web
+```
+
+Open <http://localhost:8000> in your browser and start chatting with the agent.
+
+### Direct Python Usage
 
 ```python
-from multi_tool_agent.agent import root_agent
+# Add the multi-tool-agent directory to your Python path
+import sys
+sys.path.append('./multi-tool-agent')
+
+from agent import root_agent
 
 # The agent is ready to use with all enhanced capabilities
+# You can also import individual services:
+from weather import weather_service
+from time_service import time_service
+```
+
+### Programmatic Usage
+
+```python
+# Import specific functions
+from multi_tool_agent.agent import (
+    get_weather,
+    get_weather_forecast,
+    get_current_time,
+    get_time_difference,
+    get_world_clock,
+    get_city_info
+)
+
+# Use directly
+weather_data = get_weather("London")
+time_data = get_current_time("Tokyo")
 ```
 
 ## Available Tools
@@ -138,6 +289,27 @@ city_info = get_city_info("Abuja")
 print(city_info["report"])
 ```
 
+## Project Structure
+
+```
+ai-weather-time-agent/               # Repository root
+├── README.md                        # This file
+├── .gitignore                      # Git ignore rules
+└── multi-tool-agent/               # Agent implementation
+    ├── .env.example                # Environment template
+    ├── .gitignore                  # Agent-specific ignores
+    ├── .vscode/                    # VS Code settings
+    │   └── settings.json
+    ├── __init__.py                 # Package initialization
+    ├── agent.py                    # Main agent with 6 functions
+    ├── config.py                   # Configuration management
+    ├── weather.py                  # Weather service
+    ├── time_service.py             # Time service
+    ├── utils.py                    # Location utilities
+    ├── requirements.txt            # Python dependencies
+    └── test_agent.py              # Test suite
+```
+
 ## Architecture
 
 ### Core Components
@@ -174,6 +346,59 @@ The agent provides graceful error handling:
 - **numpy**: Required by timezonefinder
 - **python-dotenv**: Load environment variables from .env file
 - **google.adk.agents**: Google AI agent framework
+
+## Troubleshooting
+
+### Common Issues
+
+#### 1. "Module not found" errors
+
+```bash
+# Make sure you're in the right directory
+cd ai-weather-time-agent/multi-tool-agent
+
+# Check if all dependencies are installed
+pip install -r requirements.txt
+
+# For programmatic usage, ensure proper path setup
+import sys
+sys.path.append('./multi-tool-agent')
+```
+
+#### 2. API key not working
+
+```bash
+# Verify your .env file exists and has the correct format
+cat multi-tool-agent/.env
+
+# Test API key directly
+curl "http://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY"
+```
+
+#### 3. ADK web server not starting
+
+```bash
+# Make sure you're in the project root directory
+cd ai-weather-time-agent
+
+# Check if port 8000 is available
+lsof -i :8000
+
+# Install Google ADK if missing
+pip install google-adk-agents
+```
+
+#### 4. Weather data not loading
+
+- Without `OPENWEATHER_API_KEY`: Agent uses demo data for 5 major cities
+- Check API key validity and usage limits
+- Verify internet connectivity
+
+### Getting Help
+
+- Check the [Issues](https://github.com/happychuks/ai-weather-time-agent/issues) page
+- Review the example usage in `test_agent.py`
+- Ensure all environment variables are properly set
 
 ## Demo Cities (Available without API key)
 
