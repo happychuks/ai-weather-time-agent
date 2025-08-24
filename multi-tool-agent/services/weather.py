@@ -6,11 +6,11 @@ from typing import Dict, Any, Optional
 
 # Handle both relative and absolute imports
 try:
-    from .config import Config
+    from ..config import Config
     from .utils import location_utils
 except ImportError:
     from config import Config
-    from utils import location_utils
+    from services.utils import location_utils
 
 # Set up logging
 logger = logging.getLogger(__name__)

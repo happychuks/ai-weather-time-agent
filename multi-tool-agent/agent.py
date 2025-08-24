@@ -7,14 +7,14 @@ from google.adk.agents import Agent
 # Import all services
 try:
     from .config import Config
-    from .weather import weather_service
-    from .time_service import time_service
-    from .utils import location_utils
+    from .services.weather import weather_service
+    from .services.time_service import time_service
+    from .services.utils import location_utils
 except ImportError:
     from config import Config
-    from weather import weather_service
-    from time_service import time_service
-    from utils import location_utils
+    from services.weather import weather_service
+    from services.time_service import time_service
+    from services.utils import location_utils
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

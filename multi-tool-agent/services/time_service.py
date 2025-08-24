@@ -8,7 +8,7 @@ import logging
 try:
     from .utils import location_utils
 except ImportError:
-    from utils import location_utils
+    from services.utils import location_utils
 
 logger = logging.getLogger(__name__)
 
