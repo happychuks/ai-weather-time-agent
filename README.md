@@ -426,4 +426,13 @@ This project is licensed under the MIT License.
 
 ## Author
 
-Happy Felix Chukwuma - [GitHub](www.github.com/happychuks), [LinkedIn](www.linkedin.com/in/happyfelixchukwuma)
+**Happy Felix Chukwuma**
+
+[![GitHub](https://img.shields.io/badge/GitHub-happychuks-blue?style=flat&logo=github)](https://github.com/happychuks)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Happy%20Felix%20Chukwuma-blue?style=flat&logo=linkedin)](https://linkedin.com/in/happyfelixchukwuma)
+
+- 🐙 **GitHub**: [github.com/happychuks](https://github.com/happychuks)
+- 💼 **LinkedIn**: [linkedin.com/in/happyfelixchukwuma](https://linkedin.com/in/happyfelixchukwuma)
+- 📧 **Email**: [happychukwuma@gmail.com](mailto:happychukwuma@gmail.com)
+
+Feel free to reach out for questions, contributions, or collaboration opportunities!
